@@ -7,82 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&family=Red+Hat+Text:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@chapeaux/cpx-cookie/cpx-cookie.js"></script>
     <script>
+        document.cookie = "rh_common_id=cookiecustomer";
+        document.cookie = "rh_user_id=cookieId";
+        document.cookie = "rh_sso_session=1";
         document.cookie = "cpx_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTM1OTA3NzIsImlhdCI6MTYwMzgwMjM3MCwiYXV0aF90aW1lIjoxNjAzODAyMzY5LCJqdGkiOiJ7e0dVSUR9fSIsImlzcyI6Imh0dHBzOi8vc3NvLnJlZGhhdC5jb20vYXV0aC9yZWFsbXMvcmVkaGF0LWV4dGVybmFsIiwiYXVkIjoiY3VzdG9tZXItcG9ydGFsIiwic3ViIjoiZjp7e0dVSUR9fTp7e1VTRVJOQU1FfX0iLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjdXN0b21lci1wb3J0YWwiLCJub25jZSI6Int7R1VJRH19Iiwic2Vzc2lvbl9zdGF0ZSI6Int7R1VJRH19IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL3Byb2QuZm9vLnJlZGhhdC5jb206MTMzNyIsImh0dHBzOi8vd3d3LnJlZGhhdC5jb20iLCJodHRwczovL2FjY2Vzcy5yZWRoYXQuY29tIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJhdXRoZW50aWNhdGVkIiwiY2FuZGxlcGluX3N5c3RlbV9hY2Nlc3Nfdmlld19lZGl0X3BlcnNvbmFsIiwiaWRwX2F1dGhlbnRpY2F0ZWQiLCJwb3J0YWxfbWFuYWdlX3N1YnNjcmlwdGlvbnMiLCJlcnJhdGE6bm90aWZpY2F0aW9uX3N0YXR1c19lbmFibGVkIiwiZXJyYXRhOm5vdGlmaWNhdGlvbjplbmhhbmNlbWVudCIsInBvcnRhbF9tYW5hZ2VfY2FzZXMiLCJlcnJhdGE6bm90aWZpY2F0aW9uOnNlY3VyaXR5IiwiZXJyYXRhOm5vdGlmaWNhdGlvbl9sZXZlbF9zeXN0ZW0tdmlzaWJsZSIsImVycmF0YTpub3RpZmljYXRpb246YnVnZml4Iiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInBvcnRhbF9zeXN0ZW1fbWFuYWdlbWVudCIsImNsb3VkX2FjY2Vzc18xIiwiZXJyYXRhOm5vdGlmaWNhdGlvbl9kZWxpdmVyeV9pbnN0YW50IiwicG9ydGFsX2Rvd25sb2FkIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsicmhkLWRtIjp7InJvbGVzIjpbInJodXNlciJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgTGVnYWN5X0lEUF9PcGVuSUQiLCJSRURIQVRfTE9HSU4iOiJ7e1VTRVJOQU1FfX0iLCJsYXN0TmFtZSI6IlVzZXIiLCJjb3VudHJ5IjoiVVMiLCJhY2NvdW50X251bWJlciI6Int7QUNDVF9OT319IiwicHJlZmVycmVkX3VzZXJuYW1lIjoie3tVU0VSTkFNRX19IiwiZmlyc3ROYW1lIjoiVGVzdCIsImFjY291bnRfaWQiOiJ7e0FDQ1RfSUR9fSIsInVzZXJfaWQiOiJ7e1VTRVJfSUR9fSIsIm9yZ2FuaXphdGlvbl9pZCI6IjAwRG0wMDAwMDAwMTE2QyIsInNpdGVJZCI6InJlZGhhdCIsInNpdGVJRCI6InJlZGhhdCIsInBvcnRhbF9pZCI6IjA2MDYwMDAwMDAwRDBhZiIsImxhbmciOiJlbl9VUyIsInJlZ2lvbiI6IlVTIiwiZW1haWwiOiJ0ZXN0MTIzQHRlc3QxMjMuY29tIiwiUkhBVF9MT0dJTiI6Int7VVNFUk5BTUV9fSIsInVzZXJuYW1lIjoie3tVU0VSTkFNRX19In0.jcFs5sIEyP49r2GTJNRnP6DxV12x3ksSu8qjFZbkhTM";
-        window['rhdp_fe_app'] = {
-            rhdKeycloak: {
-                tokenParsed: {
-                    "exp": 1603803270,
-                    "iat": 1603802370,
-                    "auth_time": 1603802369,
-                    "jti": "{{GUID}}",
-                    "iss": "https://sso.redhat.com/auth/realms/redhat-external",
-                    "aud": "customer-portal",
-                    "sub": "f:{{GUID}}:{{USERNAME}}",
-                    "typ": "Bearer",
-                    "azp": "customer-portal",
-                    "nonce": "{{GUID}}",
-                    "session_state": "{{GUID}}",
-                    "acr": "1",
-                    "allowed-origins": [
-                    "https://prod.foo.redhat.com:1337",
-                    "https://www.redhat.com",
-                    "https://access.redhat.com"
-                    ],
-                    "realm_access": {
-                    "roles": [
-                    "authenticated",
-                    "candlepin_system_access_view_edit_personal",
-                    "idp_authenticated",
-                    "portal_manage_subscriptions",
-                    "errata:notification_status_enabled",
-                    "errata:notification:enhancement",
-                    "portal_manage_cases",
-                    "errata:notification:security",
-                    "errata:notification_level_system-visible",
-                    "errata:notification:bugfix",
-                    "offline_access",
-                    "uma_authorization",
-                    "portal_system_management",
-                    "cloud_access_1",
-                    "errata:notification_delivery_instant",
-                    "portal_download"
-                    ]
-                    },
-                    "resource_access": {
-                    "rhd-dm": {
-                    "roles": [
-                    "rhuser"
-                    ]
-                    },
-                    "account": {
-                    "roles": [
-                    "manage-account",
-                    "manage-account-links",
-                    "view-profile"
-                    ]
-                    }
-                    },
-                    "scope": "openid Legacy_IDP_OpenID",
-                    "REDHAT_LOGIN": "{{USERNAME}}",
-                    "lastName": "User",
-                    "country": "US",
-                    "account_number": "{{ACCT_NO}}",
-                    "preferred_username": "{{USERNAME}}",
-                    "firstName": "Test",
-                    "account_id": "{{ACCT_ID}}",
-                    "user_id": "{{USER_ID}}",
-                    "organization_id": "00Dm0000000116C",
-                    "siteId": "redhat",
-                    "siteID": "redhat",
-                    "portal_id": "06060000000D0af",
-                    "lang": "en_US",
-                    "region": "US",
-                    "email": "test456@test456.local",
-                    "RHAT_LOGIN": "{{USERNAME}}",
-                    "username": "{{USERNAME}}"
-                }
-            }
-        };
+        
+        window['rhdp_fe_app']={ rhdKeycloak:{tokenParsed:{"exp":1603803270,"iat":1603802370,"auth_time":1603802369,"jti":"{{GUID}}","iss":"https://sso.redhat.com/auth/realms/redhat-external","aud":"customer-portal","sub":"JavaScript-userID","typ":"Bearer","azp":"customer-portal","nonce":"{{GUID}}","session_state":"{{GUID}}","acr":"1","allowed-origins":["https://prod.foo.redhat.com:1337","https://www.redhat.com","https://access.redhat.com"],"realm_access":{"roles":["authenticated","candlepin_system_access_view_edit_personal","idp_authenticated","portal_manage_subscriptions","errata:notification_status_enabled","errata:notification:enhancement","portal_manage_cases","errata:notification:security","errata:notification_level_system-visible","errata:notification:bugfix","offline_access","uma_authorization","portal_system_management","cloud_access_1","errata:notification_delivery_instant","portal_download"]},"resource_access":{"rhd-dm":{"roles":["rhuser"]},"account":{"roles":["manage-account","manage-account-links","view-profile"]}},"scope":"openidLegacy_IDP_OpenID","REDHAT_LOGIN":"{{USERNAME}}","lastName":"User","country":"US","account_number":"{{ACCT_NO}}","preferred_username":"{{USERNAME}}","firstName":"Test","account_id":"{{ACCT_ID}}","user_id":"{{USER_ID}}","organization_id":"00Dm0000000116C","siteId":"redhat","siteID":"redhat","portal_id":"06060000000D0af","lang":"en_US","region":"US","email":"test456@test456.local","RHAT_LOGIN":"{{USERNAME}}","username":"{{USERNAME}}"}}};
     </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.5.0/custom-elements-es5-adapter.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.5.0/webcomponents-bundle.js"></script> -->
@@ -92,7 +22,7 @@
     <ul>
         <li>
             <h3>JSON</h3>
-            <cpx-user eddl data-type="json">
+            <cpx-user eddl no-cookies data-type="json">
                 <script type="data">
                     {
                         "exp": 1603803270,
@@ -101,7 +31,7 @@
                         "jti": "{{GUID}}",
                         "iss": "https://sso.redhat.com/auth/realms/redhat-external",
                         "aud": "customer-portal",
-                        "sub": "f:{{GUID}}:{{USERNAME}}",
+                        "sub": "JSON-userID",
                         "typ": "Bearer",
                         "azp": "customer-portal",
                         "nonce": "{{GUID}}",
@@ -176,7 +106,11 @@
         </li>
         <li>
             <h3>JavaScript</h3>
-            <cpx-user eddl token="rhdp_fe_app.rhdKeycloak.tokenParsed" data-type="javascript"></cpx-user>
+            <cpx-user eddl no-cookies token="rhdp_fe_app.rhdKeycloak.tokenParsed" data-type="javascript"></cpx-user>
+        </li>
+        <li>
+            <h3>Manual JS</h3>
+            <cpx-user id="manual" data-type="manual"></cpx-user>
         </li>
     </ul>
     <!-- <cpx-user jwt-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTM1OTA3NzIsImlhdCI6MTYwMzgwMjM3MCwiYXV0aF90aW1lIjoxNjAzODAyMzY5LCJqdGkiOiJ7e0dVSUR9fSIsImlzcyI6Imh0dHBzOi8vc3NvLnJlZGhhdC5jb20vYXV0aC9yZWFsbXMvcmVkaGF0LWV4dGVybmFsIiwiYXVkIjoiY3VzdG9tZXItcG9ydGFsIiwic3ViIjoiZjp7e0dVSUR9fTp7e1VTRVJOQU1FfX0iLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjdXN0b21lci1wb3J0YWwiLCJub25jZSI6Int7R1VJRH19Iiwic2Vzc2lvbl9zdGF0ZSI6Int7R1VJRH19IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL3Byb2QuZm9vLnJlZGhhdC5jb206MTMzNyIsImh0dHBzOi8vd3d3LnJlZGhhdC5jb20iLCJodHRwczovL2FjY2Vzcy5yZWRoYXQuY29tIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJhdXRoZW50aWNhdGVkIiwiY2FuZGxlcGluX3N5c3RlbV9hY2Nlc3Nfdmlld19lZGl0X3BlcnNvbmFsIiwiaWRwX2F1dGhlbnRpY2F0ZWQiLCJwb3J0YWxfbWFuYWdlX3N1YnNjcmlwdGlvbnMiLCJlcnJhdGE6bm90aWZpY2F0aW9uX3N0YXR1c19lbmFibGVkIiwiZXJyYXRhOm5vdGlmaWNhdGlvbjplbmhhbmNlbWVudCIsInBvcnRhbF9tYW5hZ2VfY2FzZXMiLCJlcnJhdGE6bm90aWZpY2F0aW9uOnNlY3VyaXR5IiwiZXJyYXRhOm5vdGlmaWNhdGlvbl9sZXZlbF9zeXN0ZW0tdmlzaWJsZSIsImVycmF0YTpub3RpZmljYXRpb246YnVnZml4Iiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInBvcnRhbF9zeXN0ZW1fbWFuYWdlbWVudCIsImNsb3VkX2FjY2Vzc18xIiwiZXJyYXRhOm5vdGlmaWNhdGlvbl9kZWxpdmVyeV9pbnN0YW50IiwicG9ydGFsX2Rvd25sb2FkIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsicmhkLWRtIjp7InJvbGVzIjpbInJodXNlciJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgTGVnYWN5X0lEUF9PcGVuSUQiLCJSRURIQVRfTE9HSU4iOiJ7e1VTRVJOQU1FfX0iLCJsYXN0TmFtZSI6IlVzZXIiLCJjb3VudHJ5IjoiVVMiLCJhY2NvdW50X251bWJlciI6Int7QUNDVF9OT319IiwicHJlZmVycmVkX3VzZXJuYW1lIjoie3tVU0VSTkFNRX19IiwiZmlyc3ROYW1lIjoiVGVzdCIsImFjY291bnRfaWQiOiJ7e0FDQ1RfSUR9fSIsInVzZXJfaWQiOiJ7e1VTRVJfSUR9fSIsIm9yZ2FuaXphdGlvbl9pZCI6IjAwRG0wMDAwMDAwMTE2QyIsInNpdGVJZCI6InJlZGhhdCIsInNpdGVJRCI6InJlZGhhdCIsInBvcnRhbF9pZCI6IjA2MDYwMDAwMDAwRDBhZiIsImxhbmciOiJlbl9VUyIsInJlZ2lvbiI6IlVTIiwiZW1haWwiOiJ0ZXN0MTIzQHRlc3QxMjMuY29tIiwiUkhBVF9MT0dJTiI6Int7VVNFUk5BTUV9fSIsInVzZXJuYW1lIjoie3tVU0VSTkFNRX19In0.jcFs5sIEyP49r2GTJNRnP6DxV12x3ksSu8qjFZbkhTM"></cpx-user> -->
@@ -195,6 +129,16 @@
         window.addEventListener('user-update', e => {
             console.log('USER Update: ',e.detail);
         });
+        window.addEventListener('token-ready', e => {
+            console.log('TOKEN Ready: ',e.detail);
+        });
+
+        customElements.whenDefined('cpx-user').then(() => {
+            const manual = document.getElementById('manual');
+            manual.user = window.rhdp_fe_app.rhdKeycloak.tokenParsed;
+            manual.dispatchEDDL();
+        });
+        
     </script>
 </body>
 </html>

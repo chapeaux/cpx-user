@@ -12,12 +12,23 @@ function getCookies(cookies, values:Map<string,string>) {
     return obj;
 }
 
+function getToken(token, values:Map<string,string>) {
+    let obj = {};
+    for (const [key, value] of values) {
+        obj[value] = token[key];
+    }
+
+    return obj;
+}
+
 onmessage = function(e) {
     if (e.data && e.data.action) {
         switch (e.data.action) {
             case 'getCookies':
                 postMessage({action: e.data.action, results: getCookies(e.data.payload, e.data.values)});
             break;
+            case 'getToken':
+                postMessage({action: e.data.action, results: getToken(e.data.payload, e.data.values)});
             default:
                 postMessage({});
             break;

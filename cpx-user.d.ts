@@ -16,6 +16,9 @@ export declare class CPXUser extends HTMLElement {
     _eddl: boolean;
     get eddl(): boolean;
     set eddl(val: boolean);
+    _noCookies: boolean;
+    get noCookies(): boolean;
+    set noCookies(val: boolean);
     _eddlCustKey: string;
     get eddlCustKey(): string;
     set eddlCustKey(val: string);

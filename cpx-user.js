@@ -37,12 +37,9 @@ export class CPXUser extends HTMLElement {
         this.setAttribute("token", this._token);
         try {
             this.user = this._token.split('.').reduce((a, c) => a[c], window);
-            if (this.eddl) {
-                this.dispatchEDDL();
-            }
         }
         catch {
-            console.log("ERROR in token");
+            this.user = {};
         }
     }
     get eddl() {
@@ -68,20 +65,46 @@ export class CPXUser extends HTMLElement {
             }
         }
     }
+    get noCookies() {
+        return this._noCookies;
+    }
+    set noCookies(val) {
+        if (typeof val === "string") {
+            val = true;
+        }
+        if (val === null) {
+            val = false;
+        }
+        if (this._noCookies === val) {
+            return;
+        }
+        else {
+            this._noCookies = val;
+            if (this._noCookies) {
+                this.setAttribute("no-cookies", "");
+            }
+            else {
+                this.removeAttribute("no-cookies");
+            }
+        }
+    }
     get eddlCustKey() { return this._eddlCustKey; }
     set eddlCustKey(val) {
-        if (this.eddlCustKey == val)
+        if (this._eddlCustKey === val)
             return;
-        this.eddlCustKey = val;
+        this._eddlCustKey = val;
     }
     get eddlUserId() { return this._eddlUserId; }
     set eddlUserId(val) {
-        if (this.eddlCustKey == val)
+        if (this._eddlUserId === val)
             return;
-        this.eddlCustKey = val;
+        this._eddlUserId = val;
     }
     get eddlLoggedIn() { return this._eddlLoggedIn; }
     set eddlLoggedIn(val) {
+        if (this.eddlLoggedIn === val)
+            return;
+        this._eddlLoggedIn = val;
     }
     get ready() {
         return this._ready;
@@ -108,7 +131,7 @@ export class CPXUser extends HTMLElement {
             composed: true,
             bubbles: true,
         }));
-        if (this.eddl && !this.token) {
+        if (this.eddl) {
             this.initWorker();
         }
         this.ready = true;
@@ -121,6 +144,7 @@ export class CPXUser extends HTMLElement {
         this._givenname = "";
         this._email = "";
         this._eddl = false;
+        this._noCookies = false;
         this._eddlCustKey = 'rh_common_id';
         this._eddlUserId = 'rh_user_id';
         this._eddlLoggedIn = 'rh_sso_session';
@@ -132,9 +156,13 @@ export class CPXUser extends HTMLElement {
         if (data && data.innerText) {
             this.user = JSON.parse(data.innerText);
         }
-        this.addEventListener('token-ready', e => {
-            this.user = e['detail'];
-        });
+        if (this.eddl && !this.noCookies) {
+            this.addEventListener('token-ready', e => {
+                e.stopImmediatePropagation();
+                this.user = e['detail'];
+                return false;
+            });
+        }
     }
     static get observedAttributes() {
         return [
@@ -144,7 +172,8 @@ export class CPXUser extends HTMLElement {
             "username",
             "user-id",
             "eddl",
-            "token"
+            "token",
+            "no-cookies"
         ];
     }
     attributeChangedCallback(name, oldVal, newVal) {
@@ -172,22 +201,31 @@ export class CPXUser extends HTMLElement {
                     }
                     this.dispatchEDDL();
                     break;
+                case 'getToken':
+                    if (data.results) {
+                        Object.assign(this.user, data.results);
+                    }
+                    this.dispatchEDDL();
+                    break;
             }
         }
     }
     async dispatchEDDL() {
+        this.user['loggedIn'] = this.user.sub ? true : false;
         let hashedEmail = '';
         if (typeof this.user['email'] !== 'undefined' && this.user['email'].length && this.user['email'].length > 0) {
             hashedEmail = await this.generateHash(this.user['email']);
         }
         this.dispatchEvent(new CustomEvent("eddl-user-ready", {
             detail: {
-                custKey: this.user['custKey'],
-                ebsAccountNumber: this.user['account_number'] || '',
-                userID: this.user['userID'],
-                lastLoginDate: this.user['auth_time'] ? (new Date(this.user['auth_time'] * 1000)).toISOString() : '',
-                loggedIn: parseInt(this.user['loggedIn']) ? "true" : "false",
-                hashedEmail: hashedEmail
+                "ebsAccountNumber": this.user['account_number'] || '',
+                "hashedEmail": hashedEmail,
+                "lastLoginDate": this.user['auth_time'] ? (new Date(this.user['auth_time'] * 1000)).toISOString() : '',
+                "loggedIn": !!this.user['loggedIn'],
+                "organizationID": "",
+                "socialAccountsLinked": "",
+                "ssoClientID": "",
+                "userID": this.user['sub'] ?? ''
             },
             composed: true,
             bubbles: true,
@@ -204,15 +242,19 @@ export class CPXUser extends HTMLElement {
                 this._worker = new Peasant(this);
             }
         }
-        this._worker.postMessage({
-            action: 'getCookies',
-            values: new Map([
-                ['rh_common_id', 'custKey'],
-                ['rh_user_id', 'userID'],
-                ['rh_sso_session', 'loggedIn']
-            ]),
-            payload: document.cookie
-        });
+        if (this.eddl && !this.noCookies) {
+            this._worker.postMessage({
+                action: 'getCookies',
+                values: new Map([
+                    ['rh_common_id', 'custKey'],
+                    ['rh_user_id', 'userID'],
+                    ['rh_sso_session', 'loggedIn']
+                ]),
+                payload: document.cookie
+            });
+        }
+        else if (this.eddl) {
+        }
     }
 }
 window.customElements.define(CPXUser.tag, CPXUser);

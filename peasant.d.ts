@@ -3,4 +3,5 @@ export declare class Peasant {
     onmessage: any;
     constructor(targetObj: any);
     getCookies(cookies: any, values: Map<string, string>): {};
+    getToken(token: any, values: Map<string, string>): {};
 }

@@ -6,6 +6,9 @@ export class Peasant {
                 case 'getCookies':
                     this['onmessage']({ data: { action: e.action, results: this.getCookies(e.payload, e.values) } });
                     break;
+                case 'getToken':
+                    this['onmessage']({ data: { action: e.action, results: this.getToken(e.payload, e.values) } });
+                    break;
                 default:
                     this['onmessage']({ data: {} });
                     break;
@@ -22,6 +25,13 @@ export class Peasant {
         });
         for (const [key, value] of values) {
             obj[value] = cookieMap.get(key) || '';
+        }
+        return obj;
+    }
+    getToken(token, values) {
+        let obj = {};
+        for (const [key, value] of values) {
+            obj[value] = token[key];
         }
         return obj;
     }

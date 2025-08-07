@@ -1,4 +1,5 @@
 declare function getCookies(cookies: any, values: Map<string, string>): {};
+declare function getToken(token: any, values: Map<string, string>): {};
 declare class User {
     constructor(obj?: any);
     givenname: string;
